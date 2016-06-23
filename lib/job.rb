@@ -7,6 +7,7 @@ class Job
   end
 
   def validate!
+    raise InvalidJobIdError if @job_id.empty?
     raise SelfDependencyError if @job_id == @dependency
     return true
   end
