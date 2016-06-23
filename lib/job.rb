@@ -1,14 +1,14 @@
 class Job
-  attr_accessor :job_id, :dependency
+  attr_accessor :id, :dependency
 
-  def initialize(job_id, dependency)
-    @job_id = job_id
+  def initialize(id, dependency)
+    @id = id
     @dependency = dependency
   end
 
   def validate!
-    raise InvalidJobIdError if @job_id.empty?
-    raise SelfDependencyError if @job_id == @dependency
+    raise InvalidJobIdError if @id.empty?
+    raise SelfDependencyError if @id == @dependency
     return true
   end
 end
