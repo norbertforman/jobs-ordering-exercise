@@ -30,17 +30,6 @@ class JobQueue
       circular_dependency?(parent, child_dependency.dependency)
     end
 
-    def sort_jobs(sorted, jobs)
-      return sorted if jobs.empty?
-      jobs.each do |job, dependency|
-        unless jobs.key?(dependency)
-          sorted << job
-          jobs.delete(job)
-        end
-      end
-      sort_jobs(sorted, jobs)
-    end
-
     def validate!
       @jobs.each do |job|
         job.validate!
